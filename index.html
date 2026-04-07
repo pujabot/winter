@@ -5,6 +5,7 @@
   <title>Winterfell Technologies</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #0f172a;
@@ -13,10 +14,7 @@
     }
     a { text-decoration: none; }
     img { max-width: 100%; display: block; }
-    .container {
-      width: min(1200px, 92%);
-      margin: auto;
-    }
+    .container { width: min(1200px, 92%); margin: auto; }
     header {
       position: sticky;
       top: 0;
@@ -33,38 +31,41 @@
       gap: 15px;
       flex-wrap: wrap;
     }
-    .brand h1 {
-      font-size: 1.6rem;
-      color: #fff;
-    }
-    .brand p {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-    }
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .brand h1 { font-size: 1.6rem; color: #fff; }
+    .brand p { color: #cbd5e1; font-size: 0.95rem; }
+    .nav-buttons { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .btn {
       padding: 12px 18px;
       border-radius: 12px;
       font-weight: bold;
       display: inline-block;
       transition: 0.25s ease;
+      border: none;
+      cursor: pointer;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-light {
+    .btn-light { background: #fff; color: #0f172a; }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: #fff; background: transparent; }
+    .btn-green { background: #22c55e; color: #fff; }
+    .cart-btn {
+      position: relative;
       background: #fff;
       color: #0f172a;
     }
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-    }
-    .btn-green {
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
       background: #22c55e;
       color: #fff;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
     }
     .hero {
       padding: 60px 0 40px;
@@ -91,11 +92,7 @@
       line-height: 1.15;
       margin-bottom: 18px;
     }
-    .hero p {
-      color: #cbd5e1;
-      margin-bottom: 24px;
-      font-size: 1.05rem;
-    }
+    .hero p { color: #cbd5e1; margin-bottom: 24px; font-size: 1.05rem; }
     .hero-actions {
       display: flex;
       gap: 12px;
@@ -107,7 +104,9 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      min-height: 380px;
     }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; }
     .features {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -120,17 +119,9 @@
       border-radius: 18px;
       padding: 16px;
     }
-    section {
-      padding: 26px 0;
-    }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    .section-text {
-      color: #cbd5e1;
-      margin-bottom: 20px;
-    }
+    section { padding: 26px 0; }
+    .section-title { font-size: 2rem; margin-bottom: 10px; }
+    .section-text { color: #cbd5e1; margin-bottom: 20px; }
     .categories {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -152,10 +143,9 @@
       height: 220px;
       width: 100%;
       object-fit: cover;
+      background: #111827;
     }
-    .product-content {
-      padding: 18px;
-    }
+    .product-content { padding: 18px; }
     .product-top {
       display: flex;
       justify-content: space-between;
@@ -172,30 +162,13 @@
       font-size: 0.8rem;
       font-weight: bold;
     }
-    .price {
-      color: #4ade80;
-      font-weight: bold;
-    }
-    .product-card h4 {
-      font-size: 1.15rem;
-      margin-bottom: 8px;
-    }
-    .product-card p {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      margin-bottom: 16px;
-    }
-    .product-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .product-buttons button,
-    .product-buttons a {
+    .price { color: #4ade80; font-weight: bold; }
+    .product-card h4 { font-size: 1.15rem; margin-bottom: 8px; }
+    .product-card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 16px; }
+    .product-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+    .product-buttons button, .product-buttons a {
       flex: 1;
       min-width: 120px;
-      border: none;
-      cursor: pointer;
       text-align: center;
     }
     .why-wrap {
@@ -238,32 +211,140 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 390px;
+      max-width: 92vw;
+      height: 100vh;
+      background: #111827;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      z-index: 2000;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.35);
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-header, .cart-footer {
+      padding: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .cart-footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      margin-top: auto;
+    }
+    .cart-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-items {
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .cart-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 12px;
+    }
+    .cart-item img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #1f2937;
+    }
+    .cart-item h5 { font-size: 0.98rem; margin-bottom: 4px; }
+    .cart-item p { color: #cbd5e1; font-size: 0.9rem; }
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .qty-btn, .remove-btn, .close-btn {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+    .remove-btn { background: rgba(239,68,68,0.18); }
+    .qty-value {
+      min-width: 28px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .cart-empty {
+      color: #cbd5e1;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+      font-weight: bold;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      z-index: 1500;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
     @media (max-width: 980px) {
-      .hero-wrap,
-      .why-wrap,
-      .products,
-      .categories {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .hero-wrap,
-      .why-wrap {
-        grid-template-columns: 1fr;
-      }
+      .products, .categories { grid-template-columns: repeat(2, 1fr); }
+      .hero-wrap, .why-wrap { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .hero h2 { font-size: 2.1rem; }
-      .features,
-      .products,
-      .categories,
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
+      .features, .products, .categories, .why-grid { grid-template-columns: 1fr; }
       .nav { align-items: flex-start; }
+      .cart-drawer { width: 100%; max-width: 100%; }
     }
   </style>
 </head>
 <body>
-  <header>
+  <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <div class="cart-title-row">
+        <h3>Your Cart</h3>
+        <button class="close-btn" onclick="toggleCart(false)">Close</button>
+      </div>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Your cart is empty.</div>
+    </div>
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Total</span>
+        <span id="cartTotal">KES 0</span>
+      </div>
+      <a href="#" class="btn btn-green" id="checkoutBtn" style="width: 100%; text-align: center;">Checkout on WhatsApp</a>
+    </div>
+  </aside>  <header>
     <div class="container nav">
       <div class="brand">
         <h1>Winterfell Technologies</h1>
@@ -272,7 +353,7 @@
       <div class="nav-buttons">
         <a href="tel:+254795323615" class="btn btn-outline">Call Now</a>
         <a href="https://wa.me/254795323615" class="btn btn-green" target="_blank">WhatsApp</a>
-        <a href="#shop" class="btn btn-light">Cart (0)</a>
+        <button class="btn cart-btn" onclick="toggleCart(true)">Cart <span class="cart-count" id="cartCount">0</span></button>
       </div>
     </div>
   </header>  <section class="hero">
@@ -327,7 +408,7 @@
             <h4>iPhone Covers</h4>
             <p>Stylish and protective covers for iPhone models.</p>
             <div class="product-buttons">
-              <button class="btn btn-light">Add to Cart</button>
+              <button class="btn btn-light" onclick="addToCart('iPhone Covers', 1500, 'https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
               <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20iPhone%20Covers" target="_blank">Order</a>
             </div>
           </div>
@@ -338,7 +419,7 @@
         <h4>Samsung & Android Covers</h4>
         <p>Quality covers for Samsung, Redmi, Tecno, Infinix and more.</p>
         <div class="product-buttons">
-          <button class="btn btn-light">Add to Cart</button>
+          <button class="btn btn-light" onclick="addToCart('Samsung & Android Covers', 1200, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
           <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Samsung%20and%20Android%20Covers" target="_blank">Order</a>
         </div>
       </div>
@@ -351,20 +432,20 @@
         <h4>Screen Protectors</h4>
         <p>Scratch-resistant protectors for phones and tablets.</p>
         <div class="product-buttons">
-          <button class="btn btn-light">Add to Cart</button>
+          <button class="btn btn-light" onclick="addToCart('Screen Protectors', 800, 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
           <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Screen%20Protectors" target="_blank">Order</a>
         </div>
       </div>
     </div>
 
     <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=900&q=80" alt="Laptop Batteries" />
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Laptop Batteries" />
       <div class="product-content">
         <div class="product-top"><span class="tag">Batteries</span><span class="price">KES 4,500</span></div>
         <h4>Laptop Batteries</h4>
-        <p>Replacement laptop batteries for common brands.</p>
+        <p>Replacement laptop batteries for HP, Dell, Lenovo and other common brands.</p>
         <div class="product-buttons">
-          <button class="btn btn-light">Add to Cart</button>
+          <button class="btn btn-light" onclick="addToCart('Laptop Batteries', 4500, 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
           <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Laptop%20Batteries" target="_blank">Order</a>
         </div>
       </div>
@@ -377,7 +458,7 @@
         <h4>HP Pavilion Laptop</h4>
         <p>Reliable performance laptop for school, office and business.</p>
         <div class="product-buttons">
-          <button class="btn btn-light">Add to Cart</button>
+          <button class="btn btn-light" onclick="addToCart('HP Pavilion Laptop', 58999, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
           <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20HP%20Pavilion%20Laptop" target="_blank">Order</a>
         </div>
       </div>
@@ -390,7 +471,7 @@
         <h4>Dell Inspiron Laptop</h4>
         <p>Modern laptop with strong battery life and smooth performance.</p>
         <div class="product-buttons">
-          <button class="btn btn-light">Add to Cart</button>
+          <button class="btn btn-light" onclick="addToCart('Dell Inspiron Laptop', 64500, 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
           <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Dell%20Inspiron%20Laptop" target="_blank">Order</a>
         </div>
       </div>
@@ -403,7 +484,7 @@
         <h4>Fast Chargers & Cables</h4>
         <p>Charging accessories for everyday phone and tablet use.</p>
         <div class="product-buttons">
-          <button class="btn btn-light">Add to Cart</button>
+          <button class="btn btn-light" onclick="addToCart('Fast Chargers & Cables', 1000, 'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
           <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Fast%20Chargers%20and%20Cables" target="_blank">Order</a>
         </div>
       </div>
@@ -416,7 +497,7 @@
         <h4>Bluetooth Earbuds</h4>
         <p>Portable earbuds with stylish case and clean sound.</p>
         <div class="product-buttons">
-          <button class="btn btn-light">Add to Cart</button>
+          <button class="btn btn-light" onclick="addToCart('Bluetooth Earbuds', 2500, 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
           <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Bluetooth%20Earbuds" target="_blank">Order</a>
         </div>
       </div>
@@ -460,6 +541,87 @@
       <p>© 2026 Winterfell Technologies. All rights reserved.</p>
       <p>Branded by Kelvin · +254106624924</p>
     </div>
-  </footer>
-</body>
+  </footer>  <script>
+    const phoneNumber = '254795323615';
+    let cart = [];
+
+    function formatKES(value) {
+      return 'KES ' + Number(value).toLocaleString();
+    }
+
+    function toggleCart(show) {
+      document.getElementById('cartDrawer').classList.toggle('open', show);
+      document.getElementById('overlay').classList.toggle('show', show);
+    }
+
+    function addToCart(name, price, image) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, image, quantity: 1 });
+      }
+      updateCart();
+      toggleCart(true);
+    }
+
+    function changeQty(name, amount) {
+      const item = cart.find(product => product.name === name);
+      if (!item) return;
+      item.quantity += amount;
+      if (item.quantity <= 0) {
+        cart = cart.filter(product => product.name !== name);
+      }
+      updateCart();
+    }
+
+    function removeItem(name) {
+      cart = cart.filter(product => product.name !== name);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+      cartCount.textContent = totalItems;
+      cartTotal.textContent = formatKES(totalPrice);
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+        checkoutBtn.href = '#';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div>
+            <h5>${item.name}</h5>
+            <p>${formatKES(item.price)}</p>
+            <div class="qty-row">
+              <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', -1)">-</button>
+              <span class="qty-value">${item.quantity}</span>
+              <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
+              <button class="remove-btn" onclick="removeItem('${item.name.replace(/'/g, "\\'")}')">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      const orderText = encodeURIComponent(
+        'Hello Winterfell Technologies, I want to order:%0A%0A' +
+        cart.map(item => `- ${item.name} x${item.quantity} = ${formatKES(item.price * item.quantity)}`).join('%0A') +
+        `%0A%0ATotal: ${formatKES(totalPrice)}`
+      );
+
+      checkoutBtn.href = `https://wa.me/${phoneNumber}?text=${orderText}`;
+      checkoutBtn.target = '_blank';
+    }
+  </script></body>
 </html>
