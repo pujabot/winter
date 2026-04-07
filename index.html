@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -327,7 +328,9 @@
   </style>
 </head>
 <body>
-  <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>  <aside class="cart-drawer" id="cartDrawer">
+  <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+
+  <aside class="cart-drawer" id="cartDrawer">
     <div class="cart-header">
       <div class="cart-title-row">
         <h3>Your Cart</h3>
@@ -344,7 +347,9 @@
       </div>
       <a href="#" class="btn btn-green" id="checkoutBtn" style="width: 100%; text-align: center;">Checkout on WhatsApp</a>
     </div>
-  </aside>  <header>
+  </aside>
+
+  <header>
     <div class="container nav">
       <div class="brand">
         <h1>Winterfell Technologies</h1>
@@ -356,7 +361,9 @@
         <button class="btn cart-btn" onclick="toggleCart(true)">Cart <span class="cart-count" id="cartCount">0</span></button>
       </div>
     </div>
-  </header>  <section class="hero">
+  </header>
+
+  <section class="hero">
     <div class="container hero-wrap">
       <div>
         <span class="badge">Juja Town near Juja Posta Office</span>
@@ -381,7 +388,9 @@
         <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" alt="Phone repair and technology" />
       </div>
     </div>
-  </section>  <section>
+  </section>
+
+  <section>
     <div class="container">
       <h3 class="section-title">What We Offer</h3>
       <p class="section-text">Repair services, accessories and online-style shopping for customers.</p>
@@ -396,12 +405,28 @@
         <div class="category-box">New Laptops</div>
       </div>
     </div>
-  </section>  <section id="shop">
+  </section>
+
+  <section>
+    <div class="container info-card" style="margin-top: 10px;">
+      <h3 class="section-title">Search Products</h3>
+      <p class="section-text">Quickly search for covers, batteries, chargers, laptops and more.</p>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for iPhone cover, battery, charger, HP laptop..."
+        oninput="filterProducts()"
+        style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;"
+      />
+    </div>
+  </section>
+
+  <section id="shop">
     <div class="container">
       <h3 class="section-title">Featured Products</h3>
       <p class="section-text">Explore covers, protectors, batteries, laptops and accessories.</p>
       <div class="products">
-        <div class="product-card">
+        <div class="product-card product-item" data-name="iphone covers phone cover apple case" data-category="phone covers">
           <img src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=80" alt="iPhone Covers" />
           <div class="product-content">
             <div class="product-top"><span class="tag">Phone Covers</span><span class="price">KES 1,500</span></div>
@@ -412,100 +437,103 @@
               <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20iPhone%20Covers" target="_blank">Order</a>
             </div>
           </div>
-        </div><div class="product-card">
-      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80" alt="Android Covers" />
-      <div class="product-content">
-        <div class="product-top"><span class="tag">Phone Covers</span><span class="price">KES 1,200</span></div>
-        <h4>Samsung & Android Covers</h4>
-        <p>Quality covers for Samsung, Redmi, Tecno, Infinix and more.</p>
-        <div class="product-buttons">
-          <button class="btn btn-light" onclick="addToCart('Samsung & Android Covers', 1200, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-          <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Samsung%20and%20Android%20Covers" target="_blank">Order</a>
+        </div>
+
+        <div class="product-card product-item" data-name="samsung android covers phone cover redmi tecno infinix" data-category="phone covers">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80" alt="Android Covers" />
+          <div class="product-content">
+            <div class="product-top"><span class="tag">Phone Covers</span><span class="price">KES 1,200</span></div>
+            <h4>Samsung & Android Covers</h4>
+            <p>Quality covers for Samsung, Redmi, Tecno, Infinix and more.</p>
+            <div class="product-buttons">
+              <button class="btn btn-light" onclick="addToCart('Samsung & Android Covers', 1200, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Samsung%20and%20Android%20Covers" target="_blank">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card product-item" data-name="screen protectors protector tempered glass" data-category="protectors">
+          <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80" alt="Screen Protectors" />
+          <div class="product-content">
+            <div class="product-top"><span class="tag">Protectors</span><span class="price">KES 800</span></div>
+            <h4>Screen Protectors</h4>
+            <p>Scratch-resistant protectors for phones and tablets.</p>
+            <div class="product-buttons">
+              <button class="btn btn-light" onclick="addToCart('Screen Protectors', 800, 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Screen%20Protectors" target="_blank">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card product-item" data-name="laptop batteries hp dell lenovo battery" data-category="batteries">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Laptop Batteries" />
+          <div class="product-content">
+            <div class="product-top"><span class="tag">Batteries</span><span class="price">KES 4,500</span></div>
+            <h4>Laptop Batteries</h4>
+            <p>Replacement laptop batteries for HP, Dell, Lenovo and other common brands.</p>
+            <div class="product-buttons">
+              <button class="btn btn-light" onclick="addToCart('Laptop Batteries', 4500, 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Laptop%20Batteries" target="_blank">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card product-item" data-name="hp pavilion laptop new laptop computer" data-category="new laptops">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80" alt="HP Pavilion Laptop" />
+          <div class="product-content">
+            <div class="product-top"><span class="tag">New Laptops</span><span class="price">KES 58,999</span></div>
+            <h4>HP Pavilion Laptop</h4>
+            <p>Reliable performance laptop for school, office and business.</p>
+            <div class="product-buttons">
+              <button class="btn btn-light" onclick="addToCart('HP Pavilion Laptop', 58999, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20HP%20Pavilion%20Laptop" target="_blank">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card product-item" data-name="dell inspiron laptop new laptop computer" data-category="new laptops">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" alt="Dell Inspiron Laptop" />
+          <div class="product-content">
+            <div class="product-top"><span class="tag">New Laptops</span><span class="price">KES 64,500</span></div>
+            <h4>Dell Inspiron Laptop</h4>
+            <p>Modern laptop with strong battery life and smooth performance.</p>
+            <div class="product-buttons">
+              <button class="btn btn-light" onclick="addToCart('Dell Inspiron Laptop', 64500, 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Dell%20Inspiron%20Laptop" target="_blank">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card product-item" data-name="fast chargers cables charger cable accessories" data-category="accessories">
+          <img src="https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80" alt="Fast Chargers and Cables" />
+          <div class="product-content">
+            <div class="product-top"><span class="tag">Accessories</span><span class="price">KES 1,000</span></div>
+            <h4>Fast Chargers & Cables</h4>
+            <p>Charging accessories for everyday phone and tablet use.</p>
+            <div class="product-buttons">
+              <button class="btn btn-light" onclick="addToCart('Fast Chargers & Cables', 1000, 'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Fast%20Chargers%20and%20Cables" target="_blank">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card product-item" data-name="bluetooth earbuds accessories earphones" data-category="accessories">
+          <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80" alt="Bluetooth Earbuds" />
+          <div class="product-content">
+            <div class="product-top"><span class="tag">Accessories</span><span class="price">KES 2,500</span></div>
+            <h4>Bluetooth Earbuds</h4>
+            <p>Portable earbuds with stylish case and clean sound.</p>
+            <div class="product-buttons">
+              <button class="btn btn-light" onclick="addToCart('Bluetooth Earbuds', 2500, 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Bluetooth%20Earbuds" target="_blank">Order</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80" alt="Screen Protectors" />
-      <div class="product-content">
-        <div class="product-top"><span class="tag">Protectors</span><span class="price">KES 800</span></div>
-        <h4>Screen Protectors</h4>
-        <p>Scratch-resistant protectors for phones and tablets.</p>
-        <div class="product-buttons">
-          <button class="btn btn-light" onclick="addToCart('Screen Protectors', 800, 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-          <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Screen%20Protectors" target="_blank">Order</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Laptop Batteries" />
-      <div class="product-content">
-        <div class="product-top"><span class="tag">Batteries</span><span class="price">KES 4,500</span></div>
-        <h4>Laptop Batteries</h4>
-        <p>Replacement laptop batteries for HP, Dell, Lenovo and other common brands.</p>
-        <div class="product-buttons">
-          <button class="btn btn-light" onclick="addToCart('Laptop Batteries', 4500, 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-          <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Laptop%20Batteries" target="_blank">Order</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80" alt="HP Pavilion Laptop" />
-      <div class="product-content">
-        <div class="product-top"><span class="tag">New Laptops</span><span class="price">KES 58,999</span></div>
-        <h4>HP Pavilion Laptop</h4>
-        <p>Reliable performance laptop for school, office and business.</p>
-        <div class="product-buttons">
-          <button class="btn btn-light" onclick="addToCart('HP Pavilion Laptop', 58999, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-          <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20HP%20Pavilion%20Laptop" target="_blank">Order</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" alt="Dell Inspiron Laptop" />
-      <div class="product-content">
-        <div class="product-top"><span class="tag">New Laptops</span><span class="price">KES 64,500</span></div>
-        <h4>Dell Inspiron Laptop</h4>
-        <p>Modern laptop with strong battery life and smooth performance.</p>
-        <div class="product-buttons">
-          <button class="btn btn-light" onclick="addToCart('Dell Inspiron Laptop', 64500, 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-          <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Dell%20Inspiron%20Laptop" target="_blank">Order</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80" alt="Fast Chargers and Cables" />
-      <div class="product-content">
-        <div class="product-top"><span class="tag">Accessories</span><span class="price">KES 1,000</span></div>
-        <h4>Fast Chargers & Cables</h4>
-        <p>Charging accessories for everyday phone and tablet use.</p>
-        <div class="product-buttons">
-          <button class="btn btn-light" onclick="addToCart('Fast Chargers & Cables', 1000, 'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-          <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Fast%20Chargers%20and%20Cables" target="_blank">Order</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80" alt="Bluetooth Earbuds" />
-      <div class="product-content">
-        <div class="product-top"><span class="tag">Accessories</span><span class="price">KES 2,500</span></div>
-        <h4>Bluetooth Earbuds</h4>
-        <p>Portable earbuds with stylish case and clean sound.</p>
-        <div class="product-buttons">
-          <button class="btn btn-light" onclick="addToCart('Bluetooth Earbuds', 2500, 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-          <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Bluetooth%20Earbuds" target="_blank">Order</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  </section>  <section>
+  <section>
     <div class="container why-wrap">
       <div class="info-card">
         <h3 class="section-title">Why Customers Choose Us</h3>
@@ -527,7 +555,42 @@
         </p>
       </div>
     </div>
-  </section>  <section>
+  </section>
+
+  <section>
+    <div class="container why-wrap">
+      <div class="info-card">
+        <h3 class="section-title">Need a Repair Assessment?</h3>
+        <p class="section-text">Customers can describe the problem, then WhatsApp opens so they can attach a photo of the damaged phone or laptop and ask if it can be repaired.</p>
+        <div style="display:grid; gap:14px;">
+          <input id="repairName" type="text" placeholder="Your name" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
+          <input id="repairPhone" type="text" placeholder="Your phone number" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
+          <select id="repairDevice" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;">
+            <option value="Phone">Phone</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Tablet">Tablet</option>
+            <option value="Accessory">Accessory</option>
+          </select>
+          <textarea id="repairIssue" placeholder="Describe the issue... e.g. broken screen, not charging, battery drains fast" rows="5" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;"></textarea>
+          <button class="btn btn-green" onclick="sendRepairRequest()" style="width: fit-content;">Send Repair Request</button>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3 class="section-title">Can’t find what you want?</h3>
+        <p class="section-text">Send an inquiry and ask for a product that is not listed on the website.</p>
+        <div style="display:grid; gap:14px;">
+          <input id="inquiryName" type="text" placeholder="Your name" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
+          <input id="inquiryPhone" type="text" placeholder="Your phone number" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
+          <input id="inquiryItem" type="text" placeholder="What item are you looking for?" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
+          <textarea id="inquiryMessage" placeholder="Extra details... brand, model, color, quantity" rows="4" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;"></textarea>
+          <button class="btn btn-light" onclick="sendInquiry()" style="width: fit-content;">Send Inquiry</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="container cta">
       <h3 class="section-title">Need a repair or want to place an order?</h3>
       <p>Reach out to Winterfell Technologies today for fast service, trusted accessories and reliable support.</p>
@@ -536,12 +599,16 @@
         <a href="tel:+254795323615" class="btn btn-light">Call the Shop</a>
       </div>
     </div>
-  </section>  <footer>
+  </section>
+
+  <footer>
     <div class="container footer-wrap">
       <p>© 2026 Winterfell Technologies. All rights reserved.</p>
       <p>Branded by Kelvin · +254106624924</p>
     </div>
-  </footer>  <script>
+  </footer>
+
+  <script>
     const phoneNumber = '254795323615';
     let cart = [];
 
@@ -578,6 +645,41 @@
     function removeItem(name) {
       cart = cart.filter(product => product.name !== name);
       updateCart();
+    }
+
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const items = document.querySelectorAll('.product-item');
+      items.forEach(item => {
+        const name = (item.dataset.name || '').toLowerCase();
+        const category = (item.dataset.category || '').toLowerCase();
+        const match = name.includes(query) || category.includes(query);
+        item.style.display = match || query === '' ? 'block' : 'none';
+      });
+    }
+
+    function sendInquiry() {
+      const name = document.getElementById('inquiryName').value.trim();
+      const phone = document.getElementById('inquiryPhone').value.trim();
+      const item = document.getElementById('inquiryItem').value.trim();
+      const message = document.getElementById('inquiryMessage').value.trim();
+
+      const text = encodeURIComponent(
+        `Hello Winterfell Technologies, I want to make an inquiry.%0A%0AName: ${name}%0APhone: ${phone}%0AItem needed: ${item}%0ADetails: ${message}`
+      );
+      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+    }
+
+    function sendRepairRequest() {
+      const name = document.getElementById('repairName').value.trim();
+      const phone = document.getElementById('repairPhone').value.trim();
+      const device = document.getElementById('repairDevice').value.trim();
+      const issue = document.getElementById('repairIssue').value.trim();
+
+      const text = encodeURIComponent(
+        `Hello Winterfell Technologies, I need a repair assessment.%0A%0AName: ${name}%0APhone: ${phone}%0ADevice type: ${device}%0AIssue: ${issue}%0A%0AI will attach a photo of the damaged device here on WhatsApp. Can you check if it can be repaired?`
+      );
+      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
     }
 
     function updateCart() {
@@ -623,5 +725,6 @@
       checkoutBtn.href = `https://wa.me/${phoneNumber}?text=${orderText}`;
       checkoutBtn.target = '_blank';
     }
-  </script></body>
+  </script>
+</body>
 </html>
