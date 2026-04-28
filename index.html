@@ -1,730 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Winterfell Technologies</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Winterfell Technologies – Moving Products | Repairs & Accessories</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #fff;
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      background: #010409;
+      color: #f0f3fa;
+      scroll-behavior: smooth;
+      line-height: 1.5;
     }
-    a { text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(1200px, 92%); margin: auto; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(15, 23, 42, 0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(1,4,9,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(66,153,225,0.15);
     }
     .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      gap: 15px;
-      flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px; padding: 16px 0;
     }
-    .brand h1 { font-size: 1.6rem; color: #fff; }
-    .brand p { color: #cbd5e1; font-size: 0.95rem; }
-    .nav-buttons { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .brand h1 {
+      font-size: 1.8rem; font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, #86efac 100%);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
+    .brand p { font-size: 0.8rem; color: #9ca3af; }
+    .nav-buttons { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .btn {
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: bold;
-      display: inline-block;
-      transition: 0.25s ease;
+      padding: 10px 20px; border-radius: 40px; font-weight: 600; font-size: 0.9rem;
+      transition: 0.2s; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
       border: none;
-      cursor: pointer;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-light { background: #fff; color: #0f172a; }
-    .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: #fff; background: transparent; }
-    .btn-green { background: #22c55e; color: #fff; }
-    .cart-btn {
-      position: relative;
-      background: #fff;
-      color: #0f172a;
+    .btn-outline { border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); color: #e2e8f0; }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: #4ade80; }
+    .btn-green { background: linear-gradient(105deg, #22c55e, #16a34a); color: white; box-shadow: 0 4px 10px rgba(34,197,94,0.2); }
+    .btn-green:hover { transform: translateY(-2px); background: #16a34a; }
+    .btn-light { background: #f8fafc; color: #0f172a; font-weight: 700; }
+    .cart-btn { background: #1e293b; color: white; position: relative; }
+    .cart-count { position: absolute; top: -6px; right: -6px; background: #22c55e; padding: 2px 8px; border-radius: 60px; font-size: 0.7rem; font-weight: bold; }
+    /* Hero section */
+    .hero { padding: 60px 0 40px; background: radial-gradient(circle at 20% 30%, rgba(34,197,94,0.08), transparent 70%); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .hero-badge { background: rgba(34,197,94,0.12); padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; color: #86efac; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(34,197,94,0.3); }
+    .hero h2 { font-size: 3.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .hero p { color: #cbd5e1; margin-bottom: 28px; }
+    .hero-stats { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
+    .stat-item h3 { font-size: 2rem; font-weight: 800; color: #4ade80; }
+    .hero-image img { width: 100%; border-radius: 32px; aspect-ratio: 1/0.9; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+    /* sections */
+    .section-header { margin-bottom: 32px; }
+    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+    .section-sub { color: #9ca3af; }
+    /* categories */
+    .grid-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 16px; margin: 30px 0; }
+    .category-card { background: rgba(20,27,45,0.7); border: 1px solid rgba(66,153,225,0.2); border-radius: 28px; padding: 16px; text-align: center; font-weight: 600; transition: 0.2s; }
+    .category-card i { font-size: 1.8rem; display: block; margin-bottom: 8px; color: #4ade80; }
+    /* MOVING STRIP (MARQUEE) */
+    .moving-strip-section { margin: 40px 0; overflow: hidden; background: #0a0e17; padding: 24px 0; border-radius: 48px; }
+    .moving-strip-title { text-align: center; margin-bottom: 20px; font-size: 1.8rem; font-weight: 700; }
+    .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+    .marquee-track {
+      display: inline-flex;
+      gap: 24px;
+      animation: scrollRightToLeft 30s linear infinite;
     }
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #22c55e;
-      color: #fff;
-      font-size: 0.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-    .hero {
-      padding: 60px 0 40px;
-      background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(34,197,94,0.08), rgba(15,23,42,1));
-    }
-    .hero-wrap {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(34,197,94,0.12);
-      color: #86efac;
-      border: 1px solid rgba(34,197,94,0.2);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      margin-bottom: 18px;
-    }
-    .hero h2 {
-      font-size: 3rem;
-      line-height: 1.15;
-      margin-bottom: 18px;
-    }
-    .hero p { color: #cbd5e1; margin-bottom: 24px; font-size: 1.05rem; }
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .hero-image {
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-      min-height: 380px;
-    }
-    .hero-image img { width: 100%; height: 100%; object-fit: cover; }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 12px;
-    }
-    .feature-box, .category-box, .info-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 16px;
-    }
-    section { padding: 26px 0; }
-    .section-title { font-size: 2rem; margin-bottom: 10px; }
-    .section-text { color: #cbd5e1; margin-bottom: 20px; }
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-    .product-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.18);
-    }
-    .product-card img {
-      height: 220px;
-      width: 100%;
-      object-fit: cover;
-      background: #111827;
-    }
-    .product-content { padding: 18px; }
-    .product-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-    .tag {
-      background: rgba(59,130,246,0.12);
-      color: #93c5fd;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
-    .price { color: #4ade80; font-weight: bold; }
-    .product-card h4 { font-size: 1.15rem; margin-bottom: 8px; }
-    .product-card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 16px; }
-    .product-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
-    .product-buttons button, .product-buttons a {
-      flex: 1;
-      min-width: 120px;
-      text-align: center;
-    }
-    .why-wrap {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 22px;
-    }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    iframe {
-      width: 100%;
-      border: 0;
-      border-radius: 18px;
-      height: 280px;
-    }
-    .cta {
-      text-align: center;
-      padding: 45px 20px;
-      border-radius: 26px;
-      background: linear-gradient(135deg, rgba(34,197,94,0.16), rgba(59,130,246,0.12));
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .cta p {
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 12px auto 20px;
-    }
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 22px 0;
-      color: #94a3b8;
-      margin-top: 20px;
-    }
-    .footer-wrap {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .cart-drawer {
-      position: fixed;
-      top: 0;
-      right: -420px;
-      width: 390px;
-      max-width: 92vw;
-      height: 100vh;
-      background: #111827;
-      border-left: 1px solid rgba(255,255,255,0.08);
-      z-index: 2000;
-      transition: right 0.3s ease;
-      display: flex;
+    .marquee-track:hover { animation-play-state: paused; }
+    .moving-item {
+      display: inline-flex;
       flex-direction: column;
-      box-shadow: -10px 0 30px rgba(0,0,0,0.35);
-    }
-    .cart-drawer.open { right: 0; }
-    .cart-header, .cart-footer {
-      padding: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .cart-footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: none;
-      margin-top: auto;
-    }
-    .cart-title-row {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 10px;
-    }
-    .cart-items {
-      padding: 16px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .cart-item {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
+      width: 180px;
+      background: #0f121d;
+      border-radius: 28px;
       padding: 12px;
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 12px;
-    }
-    .cart-item img {
-      width: 72px;
-      height: 72px;
-      object-fit: cover;
-      border-radius: 12px;
-      background: #1f2937;
-    }
-    .cart-item h5 { font-size: 0.98rem; margin-bottom: 4px; }
-    .cart-item p { color: #cbd5e1; font-size: 0.9rem; }
-    .qty-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-    .qty-btn, .remove-btn, .close-btn {
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 8px 10px;
+      border: 1px solid #1e293b;
+      transition: 0.2s;
       cursor: pointer;
     }
-    .remove-btn { background: rgba(239,68,68,0.18); }
-    .qty-value {
-      min-width: 28px;
-      text-align: center;
-      font-weight: bold;
+    .moving-item img { width: 140px; height: 140px; object-fit: cover; border-radius: 20px; margin-bottom: 10px; }
+    .moving-item p { margin: 5px 0; font-weight: 600; white-space: normal; word-break: break-word; text-align: center; }
+    .moving-item .price { color: #4ade80; font-size: 1rem; }
+    @keyframes scrollRightToLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
-    .cart-empty {
-      color: #cbd5e1;
-      text-align: center;
-      padding: 40px 20px;
+    /* For duplication we'll use JS to double the list, but we also handle responsiveness */
+    @media (max-width: 768px) { .moving-item { width: 140px; } .moving-item img { width: 100px; height: 100px; } }
+    /* Floating product grid */
+    .products-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin: 20px 0; }
+    .product-card {
+      background: #0f121d;
+      border: 1px solid #1e293b;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: float 4s ease-in-out infinite;
     }
-    .total-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 1.05rem;
-      font-weight: bold;
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: #22c55e;
+      box-shadow: 0 20px 25px -15px rgba(0,0,0,0.5);
+      animation: float 1.2s ease-in-out infinite;
     }
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.3s ease;
-      z-index: 1500;
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
     }
-    .overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    @media (max-width: 980px) {
-      .products, .categories { grid-template-columns: repeat(2, 1fr); }
-      .hero-wrap, .why-wrap { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .hero h2 { font-size: 2.1rem; }
-      .features, .products, .categories, .why-grid { grid-template-columns: 1fr; }
-      .nav { align-items: flex-start; }
-      .cart-drawer { width: 100%; max-width: 100%; }
-    }
+    .product-card img { width: 100%; height: 210px; object-fit: cover; cursor: pointer; }
+    .product-content { padding: 18px; }
+    .product-top { display: flex; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; }
+    .tag { background: #1e293b; padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; color: #bbf0d0; }
+    .price { font-weight: 800; color: #4ade80; font-size: 1.1rem; }
+    .product-buttons { display: flex; gap: 10px; margin-top: 14px; }
+    .product-buttons button, .product-buttons a { flex: 1; text-align: center; font-size: 0.75rem; padding: 8px; border-radius: 28px; }
+    /* other sections */
+    .trust-logos { display: flex; flex-wrap: wrap; justify-content: space-between; background: #0a0e17; padding: 28px 20px; border-radius: 48px; margin: 30px 0; gap: 20px; }
+    .trust-logos span { font-size: 1.3rem; font-weight: 600; color: #b9cadf; opacity: 0.7; }
+    .two-col-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 40px 0; }
+    .info-panel { background: rgba(13,18,28,0.8); backdrop-filter: blur(2px); border: 1px solid #262f3f; border-radius: 32px; padding: 28px; }
+    iframe { border-radius: 20px; width: 100%; height: 240px; border: none; margin-top: 10px; }
+    input, select, textarea { background: #10131f; border: 1px solid #293241; border-radius: 20px; padding: 12px 16px; color: white; width: 100%; margin-top: 12px; outline: none; }
+    input:focus, textarea:focus { border-color: #22c55e; }
+    /* Lightbox */
+    .lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.95); z-index: 3000; justify-content: center; align-items: center; cursor: pointer; }
+    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 16px; }
+    .lightbox.show { display: flex; }
+    /* Cart drawer */
+    .cart-drawer { position: fixed; top:0; right: -480px; width: 420px; max-width: 92vw; height:100%; background: #0b0f1c; z-index: 2000; transition: 0.3s; display: flex; flex-direction: column; border-left: 1px solid #2d3a4e; }
+    .cart-drawer.open { right: 0; }
+    .cart-header, .cart-footer { padding: 20px; border-bottom: 1px solid #202433; }
+    .cart-items { flex:1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+    .cart-item { background: #121724; border-radius: 24px; padding: 12px; display: flex; gap: 12px; }
+    .cart-item img { width: 70px; height: 70px; border-radius: 18px; object-fit: cover; }
+    .overlay { position: fixed; inset:0; background: rgba(0,0,0,0.6); opacity:0; visibility: hidden; transition:0.2s; z-index:1500; }
+    .overlay.show { opacity:1; visibility: visible; }
+    .close-btn, .qty-btn, .remove-btn { background: #222b38; border: none; padding: 6px 12px; border-radius: 30px; color: white; cursor: pointer; }
+    footer { border-top: 1px solid #1c2536; padding: 30px 0; margin-top: 40px; text-align: center; color: #7382a0; }
+    @media (max-width: 1000px) { .products-grid { grid-template-columns: repeat(2,1fr); } .hero-grid, .two-col-flex { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } .hero h2 { font-size: 2.2rem; } }
   </style>
 </head>
 <body>
-  <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
 
-  <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-header">
-      <div class="cart-title-row">
-        <h3>Your Cart</h3>
-        <button class="close-btn" onclick="toggleCart(false)">Close</button>
-      </div>
-    </div>
-    <div class="cart-items" id="cartItems">
-      <div class="cart-empty">Your cart is empty.</div>
-    </div>
-    <div class="cart-footer">
-      <div class="total-row">
-        <span>Total</span>
-        <span id="cartTotal">KES 0</span>
-      </div>
-      <a href="#" class="btn btn-green" id="checkoutBtn" style="width: 100%; text-align: center;">Checkout on WhatsApp</a>
-    </div>
-  </aside>
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+<div id="lightbox" class="lightbox" onclick="hideLightbox()"><img id="lightbox-img" src="" alt="Full size"></div>
 
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <h1>Winterfell Technologies</h1>
-        <p>Phones, laptops, repairs and accessories</p>
-      </div>
-      <div class="nav-buttons">
-        <a href="tel:+254795323615" class="btn btn-outline">Call Now</a>
-        <a href="https://wa.me/254795323615" class="btn btn-green" target="_blank">WhatsApp</a>
-        <button class="btn cart-btn" onclick="toggleCart(true)">Cart <span class="cart-count" id="cartCount">0</span></button>
-      </div>
-    </div>
-  </header>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><div style="display:flex; justify-content:space-between"><h3><i class="fas fa-shopping-bag"></i> Cart</h3><button class="close-btn" onclick="toggleCart(false)">Close</button></div></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Cart empty</div></div>
+  <div class="cart-footer"><div style="display:flex; justify-content:space-between; margin-bottom:16px;"><span>Total</span><span id="cartTotal">KES 0</span></div><a href="#" class="btn btn-green" id="checkoutBtn" style="width:100%; text-align:center;">WhatsApp Order</a></div>
+</aside>
 
-  <section class="hero">
-    <div class="container hero-wrap">
-      <div>
-        <span class="badge">Juja Town near Juja Posta Office</span>
-        <h2>Fast phone and laptop repairs with trusted accessories.</h2>
-        <p>
-          Winterfell Technologies offers expert phone repairs, laptop repairs, new laptops, phone covers,
-          screen protectors, batteries, chargers, earbuds and more — all in one place.
-        </p>
-        <div class="hero-actions">
-          <a href="https://wa.me/254795323615" class="btn btn-green" target="_blank">Chat on WhatsApp</a>
-          <a href="tel:+254795323615" class="btn btn-outline">Call +254 795 323 615</a>
-          <a href="#shop" class="btn btn-light">Shop Now</a>
-        </div>
-        <div class="features">
-          <div class="feature-box">Professional phone and laptop repairs</div>
-          <div class="feature-box">iPhone and Android covers available</div>
-          <div class="feature-box">Protectors, batteries, chargers and accessories</div>
-          <div class="feature-box">New laptops at competitive prices</div>
+<header>
+  <div class="container nav">
+    <div class="brand"><h1>Winterfell<span style="color:#22c55e;">Tech</span></h1><p>Repairs · Accessories · Trust since 2020</p></div>
+    <div class="nav-buttons"><a href="tel:+254795323615" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call</a><a href="https://wa.me/254795323615" class="btn btn-green" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><button class="btn cart-btn" onclick="toggleCart(true)"><i class="fas fa-cart-shopping"></i> Cart <span class="cart-count" id="cartCount">0</span></button></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero"><div class="container hero-grid"><div><div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Juja Town · Near Posta Office</div><h2>Fix it. <span style="color:#22c55e;">Have fun.</span><br>Smart repairs & gear</h2><p>Expert phone & laptop repairs, genuine accessories, batteries, covers, new laptops.</p><div style="display: flex; gap:14px; flex-wrap:wrap;"><a href="https://wa.me/254795323615" class="btn btn-green"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a><a href="#shop" class="btn btn-light">Shop now →</a></div><div class="hero-stats"><div class="stat-item"><h3>500+</h3><p>Devices repaired</p></div><div class="stat-item"><h3>2k+</h3><p>Happy customers</p></div><div class="stat-item"><h3>24/7</h3><p>WhatsApp support</p></div></div></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=1300&q=80" alt="tech repair"></div></div></section>
+
+  <div class="container"><div class="two-col-flex"><div class="info-panel"><i class="fas fa-building" style="font-size:2rem; color:#22c55e"></i><h3 class="section-title" style="font-size:1.8rem;">Meet Winterfell Technologies</h3><p>Based in Juja, we combine fast repairs with top accessories. From covers to laptops – certified quality.</p></div><div class="info-panel"><i class="fas fa-certificate" style="font-size:2rem; color:#22c55e"></i><h3 class="section-title" style="font-size:1.8rem;">Awards & Certifications</h3><div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:10px;"><div class="category-card" style="padding:10px 20px;"><i class="fas fa-trophy"></i> Best Service 2024</div><div class="category-card" style="padding:10px 20px;"><i class="fas fa-microchip"></i> Certified Hub</div></div></div></div></div>
+
+  <!-- MOVING STRIP SECTION (horizontal infinite marquee) -->
+  <div class="container">
+    <div class="moving-strip-section">
+      <div class="moving-strip-title"><i class="fas fa-arrows-alt-h"></i> 🔥 Trending on the Move</div>
+      <div class="marquee-container">
+        <div class="marquee-track" id="marqueeTrack">
+          <!-- dynamic content from JavaScript will be injected here (products slide) -->
         </div>
       </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" alt="Phone repair and technology" />
-      </div>
+      <p style="text-align: center; margin-top: 16px; color:#9ca3af;">✨ Hover to pause | Click image to enlarge</p>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <div class="container">
-      <h3 class="section-title">What We Offer</h3>
-      <p class="section-text">Repair services, accessories and online-style shopping for customers.</p>
-      <div class="categories">
-        <div class="category-box">Phone Repairs</div>
-        <div class="category-box">Laptop Repairs</div>
-        <div class="category-box">Phone Covers</div>
-        <div class="category-box">Protectors</div>
-        <div class="category-box">Batteries</div>
-        <div class="category-box">Chargers & Cables</div>
-        <div class="category-box">Earbuds & Accessories</div>
-        <div class="category-box">New Laptops</div>
-      </div>
-    </div>
-  </section>
+  <div class="container"><div class="section-header"><h2 class="section-title">What we offer</h2><p class="section-sub">Everything under one roof</p></div><div class="grid-categories"><div class="category-card"><i class="fas fa-mobile-alt"></i> Phone Repairs</div><div class="category-card"><i class="fas fa-laptop"></i> Laptop Repairs</div><div class="category-card"><i class="fas fa-mobile"></i> Phone Covers</div><div class="category-card"><i class="fas fa-eye"></i> Protectors</div><div class="category-card"><i class="fas fa-battery-full"></i> Batteries</div><div class="category-card"><i class="fas fa-plug"></i> Chargers</div><div class="category-card"><i class="fas fa-headphones"></i> Earbuds</div><div class="category-card"><i class="fas fa-laptop-code"></i> New Laptops</div></div></div>
 
-  <section>
-    <div class="container info-card" style="margin-top: 10px;">
-      <h3 class="section-title">Search Products</h3>
-      <p class="section-text">Quickly search for covers, batteries, chargers, laptops and more.</p>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search for iPhone cover, battery, charger, HP laptop..."
-        oninput="filterProducts()"
-        style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;"
-      />
-    </div>
-  </section>
+  <div class="container" id="shop"><div class="info-panel" style="margin-bottom:28px;"><i class="fas fa-search"></i> <strong>Search products</strong><input type="text" id="searchInput" placeholder="Search for covers, battery, charger..." oninput="filterProducts()" style="margin-top:12px;"></div>
+    <div class="section-header"><h2 class="section-title">⭐ Our Products (Floating Cards)</h2><p class="section-sub">Prices and items update automatically from your Google Sheet</p></div>
+    <div class="products-grid" id="productsGrid"><div style="grid-column:1/-1; text-align:center; padding:40px;">Loading products from catalog...</div></div>
+  </div>
 
-  <section id="shop">
-    <div class="container">
-      <h3 class="section-title">Featured Products</h3>
-      <p class="section-text">Explore covers, protectors, batteries, laptops and accessories.</p>
-      <div class="products">
-        <div class="product-card product-item" data-name="iphone covers phone cover apple case" data-category="phone covers">
-          <img src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=80" alt="iPhone Covers" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">Phone Covers</span><span class="price">KES 1,500</span></div>
-            <h4>iPhone Covers</h4>
-            <p>Stylish and protective covers for iPhone models.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('iPhone Covers', 1500, 'https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20iPhone%20Covers" target="_blank">Order</a>
-            </div>
-          </div>
-        </div>
+  <div class="container"><div class="trust-logos"><span>APPLE</span><span>SAMSUNG</span><span>DELL</span><span>HP</span><span>LENOVO</span><span>TECNO</span></div></div>
 
-        <div class="product-card product-item" data-name="samsung android covers phone cover redmi tecno infinix" data-category="phone covers">
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80" alt="Android Covers" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">Phone Covers</span><span class="price">KES 1,200</span></div>
-            <h4>Samsung & Android Covers</h4>
-            <p>Quality covers for Samsung, Redmi, Tecno, Infinix and more.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('Samsung & Android Covers', 1200, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Samsung%20and%20Android%20Covers" target="_blank">Order</a>
-            </div>
-          </div>
-        </div>
+  <div class="container"><div class="section-header"><h2 class="section-title">💚 Loved by customers</h2></div><div class="two-col-flex" style="gap:24px;"><div class="info-panel"><i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i><p>"Winterfell fixed my cracked screen in 2 hours!" – Mercy K.</p></div><div class="info-panel"><i class="fas fa-headset"></i><p>"Genuine laptop battery and fast support. Highly recommend." – Kelvin M.</p></div></div></div>
 
-        <div class="product-card product-item" data-name="screen protectors protector tempered glass" data-category="protectors">
-          <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80" alt="Screen Protectors" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">Protectors</span><span class="price">KES 800</span></div>
-            <h4>Screen Protectors</h4>
-            <p>Scratch-resistant protectors for phones and tablets.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('Screen Protectors', 800, 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Screen%20Protectors" target="_blank">Order</a>
-            </div>
-          </div>
-        </div>
+  <div class="container two-col-flex"><div class="info-panel"><h3><i class="fas fa-tools"></i> Need a repair assessment?</h3><p>Describe issue + attach photo on WhatsApp</p><input id="repairName" placeholder="Your name"><input id="repairPhone" placeholder="Phone number"><select id="repairDevice"><option>Phone</option><option>Laptop</option><option>Tablet</option></select><textarea id="repairIssue" rows="3" placeholder="e.g. broken screen, battery drain"></textarea><button class="btn btn-green" onclick="sendRepairRequest()" style="margin-top:16px;"><i class="fab fa-whatsapp"></i> Send request</button></div><div class="info-panel"><h3><i class="fas fa-question-circle"></i> Can’t find a product?</h3><p>Tell us what you need – we'll source it.</p><input id="inquiryName" placeholder="Your name"><input id="inquiryPhone" placeholder="Phone"><input id="inquiryItem" placeholder="What item?"><textarea id="inquiryMessage" rows="3" placeholder="Model, color, quantity"></textarea><button class="btn btn-light" onclick="sendInquiry()" style="margin-top:16px;"><i class="fab fa-whatsapp"></i> Send inquiry</button></div></div>
 
-        <div class="product-card product-item" data-name="laptop batteries hp dell lenovo battery" data-category="batteries">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Laptop Batteries" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">Batteries</span><span class="price">KES 4,500</span></div>
-            <h4>Laptop Batteries</h4>
-            <p>Replacement laptop batteries for HP, Dell, Lenovo and other common brands.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('Laptop Batteries', 4500, 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Laptop%20Batteries" target="_blank">Order</a>
-            </div>
-          </div>
-        </div>
+  <div class="container two-col-flex"><div class="info-panel"><h3><i class="fas fa-map-pin"></i> Visit our shop</h3><p>Juja Town, near Juja Posta Office. Open Mon–Sat 9am–6pm</p><iframe src="https://www.google.com/maps?q=Juja%20Posta%20Office&z=15&output=embed" loading="lazy"></iframe></div><div class="info-panel"><h3><i class="fas fa-concierge-bell"></i> Quick contact</h3><p><i class="fas fa-phone"></i> +254 795 323 615<br><i class="fab fa-whatsapp"></i> WhatsApp orders 24/7</p><div style="display:flex; gap:12px; margin-top:20px;"><a href="https://wa.me/254795323615" class="btn btn-green">Chat now</a><a href="tel:+254795323615" class="btn btn-outline">Call us</a></div></div></div>
 
-        <div class="product-card product-item" data-name="hp pavilion laptop new laptop computer" data-category="new laptops">
-          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80" alt="HP Pavilion Laptop" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">New Laptops</span><span class="price">KES 58,999</span></div>
-            <h4>HP Pavilion Laptop</h4>
-            <p>Reliable performance laptop for school, office and business.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('HP Pavilion Laptop', 58999, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20HP%20Pavilion%20Laptop" target="_blank">Order</a>
-            </div>
-          </div>
-        </div>
+  <div class="container" style="margin:40px auto; text-align:center;"><div class="info-panel" style="background:linear-gradient(145deg,#11212e,#07111c);"><h2 style="font-size:2rem;">Ready to fix or upgrade?</h2><p>Same-day service, genuine spares, fast delivery.</p><a href="https://wa.me/254795323615" class="btn btn-green" style="margin-top:12px;"><i class="fab fa-whatsapp"></i> Start your order →</a></div></div>
+</main>
 
-        <div class="product-card product-item" data-name="dell inspiron laptop new laptop computer" data-category="new laptops">
-          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" alt="Dell Inspiron Laptop" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">New Laptops</span><span class="price">KES 64,500</span></div>
-            <h4>Dell Inspiron Laptop</h4>
-            <p>Modern laptop with strong battery life and smooth performance.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('Dell Inspiron Laptop', 64500, 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Dell%20Inspiron%20Laptop" target="_blank">Order</a>
-            </div>
-          </div>
-        </div>
+<footer><div class="container"><p>© 2026 Winterfell Technologies — Quality repairs & accessories. Juja Town.</p><p>📞 Kelvin | +254 106 624 924</p></div></footer>
 
-        <div class="product-card product-item" data-name="fast chargers cables charger cable accessories" data-category="accessories">
-          <img src="https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80" alt="Fast Chargers and Cables" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">Accessories</span><span class="price">KES 1,000</span></div>
-            <h4>Fast Chargers & Cables</h4>
-            <p>Charging accessories for everyday phone and tablet use.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('Fast Chargers & Cables', 1000, 'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Fast%20Chargers%20and%20Cables" target="_blank">Order</a>
-            </div>
-          </div>
-        </div>
+<script>
+  // --------------------------------------------------------------
+  // GOOGLE SHEETS CSV PRODUCT LOADER (CLIENT-FRIENDLY)
+  // --------------------------------------------------------------
+  // 🔽 REPLACE THIS URL with your published Google Sheets CSV link
+  const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSAMPLE/pub?output=csv';
+  // ^^ CHANGE THIS TO YOUR ACTUAL CSV LINK (see step-by-step guide)
 
-        <div class="product-card product-item" data-name="bluetooth earbuds accessories earphones" data-category="accessories">
-          <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80" alt="Bluetooth Earbuds" />
-          <div class="product-content">
-            <div class="product-top"><span class="tag">Accessories</span><span class="price">KES 2,500</span></div>
-            <h4>Bluetooth Earbuds</h4>
-            <p>Portable earbuds with stylish case and clean sound.</p>
-            <div class="product-buttons">
-              <button class="btn btn-light" onclick="addToCart('Bluetooth Earbuds', 2500, 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-              <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell%20Technologies,%20I%20want%20to%20order%20Bluetooth%20Earbuds" target="_blank">Order</a>
-            </div>
+  let products = [];
+  const fallbackProducts = [
+    { name: "iPhone Covers", price: 1500, category: "Phone Covers", image: "https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=80", description: "Stylish protective covers for iPhone" },
+    { name: "Samsung & Android Covers", price: 1200, category: "Phone Covers", image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80", description: "Covers for Samsung, Tecno, Infinix" },
+    { name: "Screen Protectors", price: 800, category: "Protectors", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80", description: "9H hardness glass" },
+    { name: "Laptop Batteries", price: 4500, category: "Batteries", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80", description: "HP, Dell, Lenovo replacement" },
+    { name: "HP Pavilion Laptop", price: 58999, category: "New Laptops", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80", description: "Performance laptop" },
+    { name: "Dell Inspiron Laptop", price: 64500, category: "New Laptops", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80", description: "Long battery life" },
+    { name: "Fast Chargers & Cables", price: 1000, category: "Accessories", image: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=900&q=80", description: "Type-C, lighting, USB" },
+    { name: "Bluetooth Earbuds", price: 2500, category: "Accessories", image: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80", description: "Wireless with charging case" }
+  ];
+
+  async function loadProductsFromSheet() {
+    try {
+      const response = await fetch(CSV_URL);
+      if (!response.ok) throw new Error('CSV download failed');
+      const csvText = await response.text();
+      const rows = csvText.split(/\r?\n/).map(row => row.split(',').map(cell => cell.replace(/^"|"$/g, '').trim()));
+      if (rows.length < 2) throw new Error('CSV empty');
+      const headers = rows[0];
+      products = rows.slice(1).filter(row => row[0] && row[0] !== '').map(row => ({
+        name: row[0] || 'Unnamed',
+        price: parseInt(row[1]) || 0,
+        category: row[2] || 'General',
+        image: row[3] || 'https://via.placeholder.com/300',
+        description: row[4] || 'Available at Winterfell'
+      }));
+      if (products.length === 0) products = fallbackProducts;
+    } catch (err) {
+      console.warn('Using fallback products because sheet not configured or error:', err);
+      products = fallbackProducts;
+    }
+    // After loading products, update BOTH grid AND moving strip
+    renderProductsGrid();
+    renderMovingStrip();
+  }
+
+  function renderProductsGrid() {
+    const grid = document.getElementById('productsGrid');
+    if (!products.length) { grid.innerHTML = '<div style="grid-column:1/-1; text-align:center;">No products found. Add items to your Google Sheet.</div>'; return; }
+    grid.innerHTML = products.map(p => `
+      <div class="product-card product-item" data-name="${p.name.toLowerCase()}" data-category="${p.category.toLowerCase()}">
+        <img src="${p.image}" alt="${p.name}" style="cursor:pointer;" onclick="showLightbox('${p.image}')">
+        <div class="product-content">
+          <div class="product-top"><span class="tag">${p.category}</span><span class="price">KES ${p.price.toLocaleString()}</span></div>
+          <h4>${p.name}</h4>
+          <p>${p.description}</p>
+          <div class="product-buttons">
+            <button class="btn btn-light" onclick="addToCart('${p.name.replace(/'/g, "\\'")}', ${p.price}, '${p.image}')">Add to Cart</button>
+            <a class="btn btn-outline" href="https://wa.me/254795323615?text=Hello%20Winterfell,%20I%20want%20to%20order%20${encodeURIComponent(p.name)}" target="_blank">Order</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    `).join('');
+  }
 
-  <section>
-    <div class="container why-wrap">
-      <div class="info-card">
-        <h3 class="section-title">Why Customers Choose Us</h3>
-        <div class="why-grid">
-          <div class="feature-box"><strong>Quick Repairs</strong><br>Fast diagnosis and repair services for phones and laptops.</div>
-          <div class="feature-box"><strong>Quality Accessories</strong><br>Covers, protectors, batteries, chargers and more.</div>
-          <div class="feature-box"><strong>Affordable Prices</strong><br>Competitive pricing for both accessories and devices.</div>
-          <div class="feature-box"><strong>Easy Ordering</strong><br>Customers can call, WhatsApp or shop from the website.</div>
+  function renderMovingStrip() {
+    const track = document.getElementById('marqueeTrack');
+    if (!products.length) { track.innerHTML = '<div style="padding:20px;">No products to display</div>'; return; }
+    // Create a set of items for the moving strip
+    let itemsHtml = '';
+    // Duplicate the products to make the infinite scroll seamless (we'll double the list)
+    const doubledProducts = [...products, ...products];
+    doubledProducts.forEach(p => {
+      itemsHtml += `
+        <div class="moving-item" onclick="showLightbox('${p.image}')">
+          <img src="${p.image}" alt="${p.name}">
+          <p><strong>${p.name}</strong></p>
+          <p class="price">KES ${p.price.toLocaleString()}</p>
         </div>
-      </div>
-      <div class="info-card">
-        <h3 class="section-title">Visit Us</h3>
-        <p class="section-text">Juja Town near Juja Posta Office</p>
-        <iframe src="https://www.google.com/maps?q=Juja%20Posta%20Office&z=15&output=embed" loading="lazy"></iframe>
-        <p class="section-text" style="margin-top: 14px; margin-bottom: 0;">
-          Phone: +254 795 323 615<br>
-          WhatsApp orders available<br>
-          Open for accessories, repairs and laptop inquiries
-        </p>
-      </div>
-    </div>
-  </section>
+      `;
+    });
+    track.innerHTML = itemsHtml;
+    // Adjust animation duration based on number of items (smooth speed)
+    const itemCount = products.length;
+    const duration = Math.max(20, itemCount * 1.5); // dynamic duration between 20-40s
+    track.style.animationDuration = `${duration}s`;
+  }
 
-  <section>
-    <div class="container why-wrap">
-      <div class="info-card">
-        <h3 class="section-title">Need a Repair Assessment?</h3>
-        <p class="section-text">Customers can describe the problem, then WhatsApp opens so they can attach a photo of the damaged phone or laptop and ask if it can be repaired.</p>
-        <div style="display:grid; gap:14px;">
-          <input id="repairName" type="text" placeholder="Your name" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
-          <input id="repairPhone" type="text" placeholder="Your phone number" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
-          <select id="repairDevice" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;">
-            <option value="Phone">Phone</option>
-            <option value="Laptop">Laptop</option>
-            <option value="Tablet">Tablet</option>
-            <option value="Accessory">Accessory</option>
-          </select>
-          <textarea id="repairIssue" placeholder="Describe the issue... e.g. broken screen, not charging, battery drains fast" rows="5" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;"></textarea>
-          <button class="btn btn-green" onclick="sendRepairRequest()" style="width: fit-content;">Send Repair Request</button>
-        </div>
-      </div>
+  // Lightbox functions
+  function showLightbox(url) { document.getElementById('lightbox-img').src = url; document.getElementById('lightbox').classList.add('show'); }
+  function hideLightbox() { document.getElementById('lightbox').classList.remove('show'); }
 
-      <div class="info-card">
-        <h3 class="section-title">Can’t find what you want?</h3>
-        <p class="section-text">Send an inquiry and ask for a product that is not listed on the website.</p>
-        <div style="display:grid; gap:14px;">
-          <input id="inquiryName" type="text" placeholder="Your name" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
-          <input id="inquiryPhone" type="text" placeholder="Your phone number" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
-          <input id="inquiryItem" type="text" placeholder="What item are you looking for?" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;" />
-          <textarea id="inquiryMessage" placeholder="Extra details... brand, model, color, quantity" rows="4" style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: white; outline: none;"></textarea>
-          <button class="btn btn-light" onclick="sendInquiry()" style="width: fit-content;">Send Inquiry</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  // Cart and helper functions (unchanged)
+  let cart = [];
+  const phoneNumber = '254795323615';
+  function formatKES(v) { return 'KES ' + Number(v).toLocaleString(); }
+  function toggleCart(show) { document.getElementById('cartDrawer').classList.toggle('open', show); document.getElementById('overlay').classList.toggle('show', show); }
+  function addToCart(name, price, image) { let ex = cart.find(i => i.name === name); if(ex) ex.quantity += 1; else cart.push({ name, price, image, quantity: 1 }); updateCart(); toggleCart(true); }
+  function changeQty(name, amt) { let idx = cart.find(i => i.name === name); if(idx) { idx.quantity += amt; if(idx.quantity <= 0) cart = cart.filter(i => i.name !== name); updateCart(); } }
+  function removeItem(name) { cart = cart.filter(i => i.name !== name); updateCart(); }
+  function filterProducts() { let q = document.getElementById('searchInput').value.toLowerCase().trim(); document.querySelectorAll('.product-item').forEach(el => { let n = el.dataset.name || ''; let c = el.dataset.category || ''; el.style.display = (n.includes(q) || c.includes(q) || q === '') ? 'block' : 'none'; }); }
+  function sendInquiry() { let n=document.getElementById('inquiryName').value, p=document.getElementById('inquiryPhone').value, it=document.getElementById('inquiryItem').value, msg=document.getElementById('inquiryMessage').value; let txt=encodeURIComponent(`Inquiry: Name: ${n} Phone: ${p} Item: ${it} Details: ${msg}`); window.open(`https://wa.me/${phoneNumber}?text=${txt}`, '_blank'); }
+  function sendRepairRequest() { let n=document.getElementById('repairName').value, p=document.getElementById('repairPhone').value, d=document.getElementById('repairDevice').value, iss=document.getElementById('repairIssue').value; let txt=encodeURIComponent(`Repair request: Name: ${n} Phone: ${p} Device: ${d} Issue: ${iss} (attach photo)`); window.open(`https://wa.me/${phoneNumber}?text=${txt}`, '_blank'); }
+  function updateCart() { let totalItems = cart.reduce((s,i)=>s+i.quantity,0); let totalPrice = cart.reduce((s,i)=>s+i.price*i.quantity,0); document.getElementById('cartCount').innerText = totalItems; document.getElementById('cartTotal').innerText = formatKES(totalPrice); let cartDiv = document.getElementById('cartItems'); if(cart.length===0){ cartDiv.innerHTML='<div class="cart-empty">Cart empty</div>'; document.getElementById('checkoutBtn').href='#'; return; } cartDiv.innerHTML = cart.map(i=>`<div class="cart-item"><img src="${i.image}"><div><h5>${i.name}</h5><p>${formatKES(i.price)}</p><div style="display:flex; gap:8px; margin-top:8px;"><button class="qty-btn" onclick="changeQty('${i.name.replace(/'/g,"\\'")}',-1)">-</button><span>${i.quantity}</span><button class="qty-btn" onclick="changeQty('${i.name.replace(/'/g,"\\'")}',1)">+</button><button class="remove-btn" onclick="removeItem('${i.name.replace(/'/g,"\\'")}')">Remove</button></div></div></div>`).join(''); let orderText = encodeURIComponent('Order from Winterfell:%0A' + cart.map(i=>`- ${i.name} x${i.quantity} = ${formatKES(i.price*i.quantity)}`).join('%0A') + `%0ATotal: ${formatKES(totalPrice)}`); document.getElementById('checkoutBtn').href = `https://wa.me/${phoneNumber}?text=${orderText}`; document.getElementById('checkoutBtn').target = '_blank'; }
 
-  <section>
-    <div class="container cta">
-      <h3 class="section-title">Need a repair or want to place an order?</h3>
-      <p>Reach out to Winterfell Technologies today for fast service, trusted accessories and reliable support.</p>
-      <div class="hero-actions" style="justify-content:center; margin-bottom:0;">
-        <a href="https://wa.me/254795323615" class="btn btn-green" target="_blank">Order on WhatsApp</a>
-        <a href="tel:+254795323615" class="btn btn-light">Call the Shop</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-wrap">
-      <p>© 2026 Winterfell Technologies. All rights reserved.</p>
-      <p>Branded by Kelvin · +254106624924</p>
-    </div>
-  </footer>
-
-  <script>
-    const phoneNumber = '254795323615';
-    let cart = [];
-
-    function formatKES(value) {
-      return 'KES ' + Number(value).toLocaleString();
-    }
-
-    function toggleCart(show) {
-      document.getElementById('cartDrawer').classList.toggle('open', show);
-      document.getElementById('overlay').classList.toggle('show', show);
-    }
-
-    function addToCart(name, price, image) {
-      const existing = cart.find(item => item.name === name);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ name, price, image, quantity: 1 });
-      }
-      updateCart();
-      toggleCart(true);
-    }
-
-    function changeQty(name, amount) {
-      const item = cart.find(product => product.name === name);
-      if (!item) return;
-      item.quantity += amount;
-      if (item.quantity <= 0) {
-        cart = cart.filter(product => product.name !== name);
-      }
-      updateCart();
-    }
-
-    function removeItem(name) {
-      cart = cart.filter(product => product.name !== name);
-      updateCart();
-    }
-
-    function filterProducts() {
-      const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const items = document.querySelectorAll('.product-item');
-      items.forEach(item => {
-        const name = (item.dataset.name || '').toLowerCase();
-        const category = (item.dataset.category || '').toLowerCase();
-        const match = name.includes(query) || category.includes(query);
-        item.style.display = match || query === '' ? 'block' : 'none';
-      });
-    }
-
-    function sendInquiry() {
-      const name = document.getElementById('inquiryName').value.trim();
-      const phone = document.getElementById('inquiryPhone').value.trim();
-      const item = document.getElementById('inquiryItem').value.trim();
-      const message = document.getElementById('inquiryMessage').value.trim();
-
-      const text = encodeURIComponent(
-        `Hello Winterfell Technologies, I want to make an inquiry.%0A%0AName: ${name}%0APhone: ${phone}%0AItem needed: ${item}%0ADetails: ${message}`
-      );
-      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
-    }
-
-    function sendRepairRequest() {
-      const name = document.getElementById('repairName').value.trim();
-      const phone = document.getElementById('repairPhone').value.trim();
-      const device = document.getElementById('repairDevice').value.trim();
-      const issue = document.getElementById('repairIssue').value.trim();
-
-      const text = encodeURIComponent(
-        `Hello Winterfell Technologies, I need a repair assessment.%0A%0AName: ${name}%0APhone: ${phone}%0ADevice type: ${device}%0AIssue: ${issue}%0A%0AI will attach a photo of the damaged device here on WhatsApp. Can you check if it can be repaired?`
-      );
-      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
-    }
-
-    function updateCart() {
-      const cartItems = document.getElementById('cartItems');
-      const cartCount = document.getElementById('cartCount');
-      const cartTotal = document.getElementById('cartTotal');
-      const checkoutBtn = document.getElementById('checkoutBtn');
-
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-      cartCount.textContent = totalItems;
-      cartTotal.textContent = formatKES(totalPrice);
-
-      if (cart.length === 0) {
-        cartItems.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
-        checkoutBtn.href = '#';
-        return;
-      }
-
-      cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}">
-          <div>
-            <h5>${item.name}</h5>
-            <p>${formatKES(item.price)}</p>
-            <div class="qty-row">
-              <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', -1)">-</button>
-              <span class="qty-value">${item.quantity}</span>
-              <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
-              <button class="remove-btn" onclick="removeItem('${item.name.replace(/'/g, "\\'")}')">Remove</button>
-            </div>
-          </div>
-        </div>
-      `).join('');
-
-      const orderText = encodeURIComponent(
-        'Hello Winterfell Technologies, I want to order:%0A%0A' +
-        cart.map(item => `- ${item.name} x${item.quantity} = ${formatKES(item.price * item.quantity)}`).join('%0A') +
-        `%0A%0ATotal: ${formatKES(totalPrice)}`
-      );
-
-      checkoutBtn.href = `https://wa.me/${phoneNumber}?text=${orderText}`;
-      checkoutBtn.target = '_blank';
-    }
-  </script>
+  window.addEventListener('DOMContentLoaded', () => { loadProductsFromSheet(); updateCart(); });
+</script>
 </body>
 </html>
