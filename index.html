@@ -11,17 +11,17 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #010409;
-      color: #f0f3fa;
+      background: #ffffff;
+      color: #1e293b;
       scroll-behavior: smooth;
       line-height: 1.5;
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(1,4,9,0.85);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(66,153,225,0.15);
+      border-bottom: 1px solid #e2e8f0;
     }
     .nav {
       display: flex; align-items: center; justify-content: space-between;
@@ -29,43 +29,45 @@
     }
     .brand h1 {
       font-size: 1.8rem; font-weight: 800;
-      background: linear-gradient(135deg, #fff 0%, #86efac 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #16a34a 100%);
       background-clip: text; -webkit-background-clip: text; color: transparent;
     }
-    .brand p { font-size: 0.8rem; color: #9ca3af; }
+    .brand p { font-size: 0.8rem; color: #475569; }
     .nav-buttons { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .btn {
       padding: 10px 20px; border-radius: 40px; font-weight: 600; font-size: 0.9rem;
       transition: 0.2s; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
       border: none;
     }
-    .btn-outline { border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); color: #e2e8f0; }
-    .btn-outline:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: #4ade80; }
-    .btn-green { background: linear-gradient(105deg, #22c55e, #16a34a); color: white; box-shadow: 0 4px 10px rgba(34,197,94,0.2); }
-    .btn-green:hover { transform: translateY(-2px); background: #16a34a; }
-    .btn-light { background: #f8fafc; color: #0f172a; font-weight: 700; }
+    .btn-outline { border: 1px solid #cbd5e1; background: transparent; color: #1e293b; }
+    .btn-outline:hover { background: #f1f5f9; transform: translateY(-2px); border-color: #16a34a; }
+    .btn-green { background: linear-gradient(105deg, #16a34a, #15803d); color: white; box-shadow: 0 4px 10px rgba(22,163,74,0.2); }
+    .btn-green:hover { transform: translateY(-2px); background: #15803d; }
+    .btn-light { background: #f1f5f9; color: #0f172a; font-weight: 700; border: 1px solid #e2e8f0; }
+    .btn-light:hover { background: #e2e8f0; transform: translateY(-2px); }
     .cart-btn { background: #1e293b; color: white; position: relative; }
     .cart-count { position: absolute; top: -6px; right: -6px; background: #22c55e; padding: 2px 8px; border-radius: 60px; font-size: 0.7rem; font-weight: bold; }
     /* Hero section */
-    .hero { padding: 60px 0 40px; background: radial-gradient(circle at 20% 30%, rgba(34,197,94,0.08), transparent 70%); }
+    .hero { padding: 60px 0 40px; background: #f8fafc; }
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-    .hero-badge { background: rgba(34,197,94,0.12); padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; color: #86efac; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(34,197,94,0.3); }
-    .hero h2 { font-size: 3.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
-    .hero p { color: #cbd5e1; margin-bottom: 28px; }
+    .hero-badge { background: #dcfce7; padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; color: #166534; display: inline-block; margin-bottom: 20px; border: 1px solid #bbf7d0; }
+    .hero h2 { font-size: 3.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; color: #0f172a; }
+    .hero p { color: #475569; margin-bottom: 28px; }
     .hero-stats { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
-    .stat-item h3 { font-size: 2rem; font-weight: 800; color: #4ade80; }
-    .hero-image img { width: 100%; border-radius: 32px; aspect-ratio: 1/0.9; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+    .stat-item h3 { font-size: 2rem; font-weight: 800; color: #16a34a; }
+    .hero-image img { width: 100%; border-radius: 32px; aspect-ratio: 1/0.9; object-fit: cover; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
     /* sections */
     .section-header { margin-bottom: 32px; }
-    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
-    .section-sub { color: #9ca3af; }
+    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 10px; color: #0f172a; }
+    .section-sub { color: #475569; }
     /* categories */
     .grid-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 16px; margin: 30px 0; }
-    .category-card { background: rgba(20,27,45,0.7); border: 1px solid rgba(66,153,225,0.2); border-radius: 28px; padding: 16px; text-align: center; font-weight: 600; transition: 0.2s; }
-    .category-card i { font-size: 1.8rem; display: block; margin-bottom: 8px; color: #4ade80; }
+    .category-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 28px; padding: 16px; text-align: center; font-weight: 600; transition: 0.2s; color: #0f172a; }
+    .category-card i { font-size: 1.8rem; display: block; margin-bottom: 8px; color: #16a34a; }
+    .category-card:hover { background: #f1f5f9; border-color: #16a34a; transform: translateY(-3px); }
     /* MOVING STRIP (MARQUEE) */
-    .moving-strip-section { margin: 40px 0; overflow: hidden; background: #0a0e17; padding: 24px 0; border-radius: 48px; }
-    .moving-strip-title { text-align: center; margin-bottom: 20px; font-size: 1.8rem; font-weight: 700; }
+    .moving-strip-section { margin: 40px 0; overflow: hidden; background: #f1f5f9; padding: 24px 0; border-radius: 48px; border: 1px solid #e2e8f0; }
+    .moving-strip-title { text-align: center; margin-bottom: 20px; font-size: 1.8rem; font-weight: 700; color: #0f172a; }
     .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
     .marquee-track {
       display: inline-flex;
@@ -78,36 +80,38 @@
       flex-direction: column;
       align-items: center;
       width: 180px;
-      background: #0f121d;
+      background: white;
       border-radius: 28px;
       padding: 12px;
-      border: 1px solid #1e293b;
+      border: 1px solid #e2e8f0;
       transition: 0.2s;
       cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
     }
+    .moving-item:hover { transform: translateY(-4px); border-color: #16a34a; }
     .moving-item img { width: 140px; height: 140px; object-fit: cover; border-radius: 20px; margin-bottom: 10px; }
-    .moving-item p { margin: 5px 0; font-weight: 600; white-space: normal; word-break: break-word; text-align: center; }
-    .moving-item .price { color: #4ade80; font-size: 1rem; }
+    .moving-item p { margin: 5px 0; font-weight: 600; white-space: normal; word-break: break-word; text-align: center; color: #1e293b; }
+    .moving-item .price { color: #16a34a; font-size: 1rem; }
     @keyframes scrollRightToLeft {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    /* For duplication we'll use JS to double the list, but we also handle responsiveness */
     @media (max-width: 768px) { .moving-item { width: 140px; } .moving-item img { width: 100px; height: 100px; } }
     /* Floating product grid */
     .products-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin: 20px 0; }
     .product-card {
-      background: #0f121d;
-      border: 1px solid #1e293b;
+      background: white;
+      border: 1px solid #e2e8f0;
       border-radius: 32px;
       overflow: hidden;
       transition: all 0.3s ease;
       animation: float 4s ease-in-out infinite;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
     }
     .product-card:hover {
       transform: translateY(-4px);
-      border-color: #22c55e;
-      box-shadow: 0 20px 25px -15px rgba(0,0,0,0.5);
+      border-color: #16a34a;
+      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
       animation: float 1.2s ease-in-out infinite;
     }
     @keyframes float {
@@ -118,33 +122,38 @@
     .product-card img { width: 100%; height: 210px; object-fit: cover; cursor: pointer; }
     .product-content { padding: 18px; }
     .product-top { display: flex; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; }
-    .tag { background: #1e293b; padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; color: #bbf0d0; }
-    .price { font-weight: 800; color: #4ade80; font-size: 1.1rem; }
+    .tag { background: #e2e8f0; padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; color: #1e293b; }
+    .price { font-weight: 800; color: #16a34a; font-size: 1.1rem; }
     .product-buttons { display: flex; gap: 10px; margin-top: 14px; }
     .product-buttons button, .product-buttons a { flex: 1; text-align: center; font-size: 0.75rem; padding: 8px; border-radius: 28px; }
+    .product-card h4 { color: #0f172a; }
+    .product-card p { color: #475569; font-size: 0.9rem; }
     /* other sections */
-    .trust-logos { display: flex; flex-wrap: wrap; justify-content: space-between; background: #0a0e17; padding: 28px 20px; border-radius: 48px; margin: 30px 0; gap: 20px; }
-    .trust-logos span { font-size: 1.3rem; font-weight: 600; color: #b9cadf; opacity: 0.7; }
+    .trust-logos { display: flex; flex-wrap: wrap; justify-content: space-between; background: #f8fafc; padding: 28px 20px; border-radius: 48px; margin: 30px 0; gap: 20px; border: 1px solid #e2e8f0; }
+    .trust-logos span { font-size: 1.3rem; font-weight: 600; color: #334155; opacity: 0.8; }
     .two-col-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 40px 0; }
-    .info-panel { background: rgba(13,18,28,0.8); backdrop-filter: blur(2px); border: 1px solid #262f3f; border-radius: 32px; padding: 28px; }
-    iframe { border-radius: 20px; width: 100%; height: 240px; border: none; margin-top: 10px; }
-    input, select, textarea { background: #10131f; border: 1px solid #293241; border-radius: 20px; padding: 12px 16px; color: white; width: 100%; margin-top: 12px; outline: none; }
-    input:focus, textarea:focus { border-color: #22c55e; }
+    .info-panel { background: #f8fafc; backdrop-filter: none; border: 1px solid #e2e8f0; border-radius: 32px; padding: 28px; color: #1e293b; }
+    .info-panel h3 { color: #0f172a; margin-bottom: 12px; }
+    iframe { border-radius: 20px; width: 100%; height: 240px; border: 1px solid #e2e8f0; margin-top: 10px; }
+    input, select, textarea { background: white; border: 1px solid #cbd5e1; border-radius: 20px; padding: 12px 16px; color: #1e293b; width: 100%; margin-top: 12px; outline: none; }
+    input:focus, textarea:focus { border-color: #16a34a; box-shadow: 0 0 0 2px rgba(22,163,74,0.2); }
     /* Lightbox */
-    .lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.95); z-index: 3000; justify-content: center; align-items: center; cursor: pointer; }
+    .lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center; cursor: pointer; }
     .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 16px; }
     .lightbox.show { display: flex; }
     /* Cart drawer */
-    .cart-drawer { position: fixed; top:0; right: -480px; width: 420px; max-width: 92vw; height:100%; background: #0b0f1c; z-index: 2000; transition: 0.3s; display: flex; flex-direction: column; border-left: 1px solid #2d3a4e; }
+    .cart-drawer { position: fixed; top:0; right: -480px; width: 420px; max-width: 92vw; height:100%; background: white; z-index: 2000; transition: 0.3s; display: flex; flex-direction: column; border-left: 1px solid #e2e8f0; box-shadow: -10px 0 25px -5px rgba(0,0,0,0.1); }
     .cart-drawer.open { right: 0; }
-    .cart-header, .cart-footer { padding: 20px; border-bottom: 1px solid #202433; }
-    .cart-items { flex:1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
-    .cart-item { background: #121724; border-radius: 24px; padding: 12px; display: flex; gap: 12px; }
+    .cart-header, .cart-footer { padding: 20px; border-bottom: 1px solid #e2e8f0; background: white; }
+    .cart-footer { border-top: 1px solid #e2e8f0; border-bottom: none; }
+    .cart-items { flex:1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; background: #ffffff; }
+    .cart-item { background: #f8fafc; border-radius: 24px; padding: 12px; display: flex; gap: 12px; border: 1px solid #e2e8f0; }
     .cart-item img { width: 70px; height: 70px; border-radius: 18px; object-fit: cover; }
-    .overlay { position: fixed; inset:0; background: rgba(0,0,0,0.6); opacity:0; visibility: hidden; transition:0.2s; z-index:1500; }
+    .overlay { position: fixed; inset:0; background: rgba(0,0,0,0.4); opacity:0; visibility: hidden; transition:0.2s; z-index:1500; }
     .overlay.show { opacity:1; visibility: visible; }
-    .close-btn, .qty-btn, .remove-btn { background: #222b38; border: none; padding: 6px 12px; border-radius: 30px; color: white; cursor: pointer; }
-    footer { border-top: 1px solid #1c2536; padding: 30px 0; margin-top: 40px; text-align: center; color: #7382a0; }
+    .close-btn, .qty-btn, .remove-btn { background: #e2e8f0; border: none; padding: 6px 12px; border-radius: 30px; color: #1e293b; cursor: pointer; font-weight: 500; }
+    .remove-btn { background: #fee2e2; color: #b91c1c; }
+    footer { border-top: 1px solid #e2e8f0; padding: 30px 0; margin-top: 40px; text-align: center; color: #475569; }
     @media (max-width: 1000px) { .products-grid { grid-template-columns: repeat(2,1fr); } .hero-grid, .two-col-flex { grid-template-columns: 1fr; } }
     @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } .hero h2 { font-size: 2.2rem; } }
   </style>
@@ -162,15 +171,15 @@
 
 <header>
   <div class="container nav">
-    <div class="brand"><h1>Winterfell<span style="color:#22c55e;">Tech</span></h1><p>Repairs · Accessories · Trust since 2018</p></div>
+    <div class="brand"><h1>Winterfell<span style="color:#16a34a;">Tech</span></h1><p>Repairs · Accessories · Trust since 2018</p></div>
     <div class="nav-buttons"><a href="tel:+254795323615" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call</a><a href="https://wa.me/254795323615" class="btn btn-green" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><button class="btn cart-btn" onclick="toggleCart(true)"><i class="fas fa-cart-shopping"></i> Cart <span class="cart-count" id="cartCount">0</span></button></div>
   </div>
 </header>
 
 <main>
-  <section class="hero"><div class="container hero-grid"><div><div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Juja Town · Near Posta Office</div><h2>Fix it. <span style="color:#22c55e;">Have fun.</span><br>Smart repairs & gear</h2><p>Expert phone & laptop repairs, genuine accessories, batteries, covers, new laptops.</p><div style="display: flex; gap:14px; flex-wrap:wrap;"><a href="https://wa.me/254795323615" class="btn btn-green"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a><a href="#shop" class="btn btn-light">Shop now →</a></div><div class="hero-stats"><div class="stat-item"><h3>500+</h3><p>Devices repaired</p></div><div class="stat-item"><h3>2k+</h3><p>Happy customers</p></div><div class="stat-item"><h3>24/7</h3><p>WhatsApp support</p></div></div></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=1300&q=80" alt="tech repair"></div></div></section>
+  <section class="hero"><div class="container hero-grid"><div><div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Juja Town · Near Posta Office</div><h2>Fix it. <span style="color:#16a34a;">Have fun.</span><br>Smart repairs & gear</h2><p>Expert phone & laptop repairs, genuine accessories, batteries, covers, new laptops.</p><div style="display: flex; gap:14px; flex-wrap:wrap;"><a href="https://wa.me/254795323615" class="btn btn-green"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a><a href="#shop" class="btn btn-light">Shop now →</a></div><div class="hero-stats"><div class="stat-item"><h3>500+</h3><p>Devices repaired</p></div><div class="stat-item"><h3>2k+</h3><p>Happy customers</p></div><div class="stat-item"><h3>24/7</h3><p>WhatsApp support</p></div></div></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=1300&q=80" alt="tech repair"></div></div></section>
 
-  <div class="container"><div class="two-col-flex"><div class="info-panel"><i class="fas fa-building" style="font-size:2rem; color:#22c55e"></i><h3 class="section-title" style="font-size:1.8rem;">Meet Winterfell Technologies</h3><p>Based in Juja, we combine fast repairs with top accessories. From covers to laptops – certified quality.</p></div><div class="info-panel"><i class="fas fa-certificate" style="font-size:2rem; color:#22c55e"></i><h3 class="section-title" style="font-size:1.8rem;">Awards & Certifications</h3><div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:10px;"><div class="category-card" style="padding:10px 20px;"><i class="fas fa-trophy"></i> Best Service 2024</div><div class="category-card" style="padding:10px 20px;"><i class="fas fa-microchip"></i> Certified Hub</div></div></div></div></div>
+  <div class="container"><div class="two-col-flex"><div class="info-panel"><i class="fas fa-building" style="font-size:2rem; color:#16a34a"></i><h3 class="section-title" style="font-size:1.8rem;">Meet Winterfell Technologies</h3><p>Based in Juja, we combine fast repairs with top accessories. From covers to laptops – certified quality.</p></div><div class="info-panel"><i class="fas fa-certificate" style="font-size:2rem; color:#16a34a"></i><h3 class="section-title" style="font-size:1.8rem;">Awards & Certifications</h3><div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:10px;"><div class="category-card" style="padding:10px 20px;"><i class="fas fa-trophy"></i> Best Service 2024</div><div class="category-card" style="padding:10px 20px;"><i class="fas fa-microchip"></i> Certified Hub</div></div></div></div></div>
 
   <!-- MOVING STRIP SECTION (horizontal infinite marquee) -->
   <div class="container">
@@ -181,7 +190,7 @@
           <!-- dynamic content from JavaScript will be injected here (products slide) -->
         </div>
       </div>
-      <p style="text-align: center; margin-top: 16px; color:#9ca3af;">✨ Hover to pause | Click image to enlarge</p>
+      <p style="text-align: center; margin-top: 16px; color:#475569;">✨ Hover to pause | Click image to enlarge</p>
     </div>
   </div>
 
@@ -194,13 +203,13 @@
 
   <div class="container"><div class="trust-logos"><span>APPLE</span><span>SAMSUNG</span><span>DELL</span><span>HP</span><span>LENOVO</span><span>TECNO</span></div></div>
 
-  <div class="container"><div class="section-header"><h2 class="section-title">💚 Loved by customers</h2></div><div class="two-col-flex" style="gap:24px;"><div class="info-panel"><i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i> <i class="fas fa-star" style="color:gold"></i><p>"Winterfell fixed my cracked screen in 2 hours!" – Mercy K.</p></div><div class="info-panel"><i class="fas fa-headset"></i><p>"Genuine laptop battery and fast support. Highly recommend." – Kelvin M.</p></div></div></div>
+  <div class="container"><div class="section-header"><h2 class="section-title">💚 Loved by customers</h2></div><div class="two-col-flex" style="gap:24px;"><div class="info-panel"><i class="fas fa-star" style="color:#eab308"></i> <i class="fas fa-star" style="color:#eab308"></i> <i class="fas fa-star" style="color:#eab308"></i> <i class="fas fa-star" style="color:#eab308"></i> <i class="fas fa-star" style="color:#eab308"></i><p>"Winterfell fixed my cracked screen in 2 hours!" – Mercy K.</p></div><div class="info-panel"><i class="fas fa-headset"></i><p>"Genuine laptop battery and fast support. Highly recommend." – Kelvin M.</p></div></div></div>
 
   <div class="container two-col-flex"><div class="info-panel"><h3><i class="fas fa-tools"></i> Need a repair assessment?</h3><p>Describe issue + attach photo on WhatsApp</p><input id="repairName" placeholder="Your name"><input id="repairPhone" placeholder="Phone number"><select id="repairDevice"><option>Phone</option><option>Laptop</option><option>Tablet</option></select><textarea id="repairIssue" rows="3" placeholder="e.g. broken screen, battery drain"></textarea><button class="btn btn-green" onclick="sendRepairRequest()" style="margin-top:16px;"><i class="fab fa-whatsapp"></i> Send request</button></div><div class="info-panel"><h3><i class="fas fa-question-circle"></i> Can’t find a product?</h3><p>Tell us what you need – we'll source it.</p><input id="inquiryName" placeholder="Your name"><input id="inquiryPhone" placeholder="Phone"><input id="inquiryItem" placeholder="What item?"><textarea id="inquiryMessage" rows="3" placeholder="Model, color, quantity"></textarea><button class="btn btn-light" onclick="sendInquiry()" style="margin-top:16px;"><i class="fab fa-whatsapp"></i> Send inquiry</button></div></div>
 
   <div class="container two-col-flex"><div class="info-panel"><h3><i class="fas fa-map-pin"></i> Visit our shop</h3><p>Juja Town, near Juja Posta Office. Open Mon–Sat 9am–6pm</p><iframe src="https://www.google.com/maps?q=Juja%20Posta%20Office&z=15&output=embed" loading="lazy"></iframe></div><div class="info-panel"><h3><i class="fas fa-concierge-bell"></i> Quick contact</h3><p><i class="fas fa-phone"></i> +254 795 323 615<br><i class="fab fa-whatsapp"></i> WhatsApp orders 24/7</p><div style="display:flex; gap:12px; margin-top:20px;"><a href="https://wa.me/254795323615" class="btn btn-green">Chat now</a><a href="tel:+254795323615" class="btn btn-outline">Call us</a></div></div></div>
 
-  <div class="container" style="margin:40px auto; text-align:center;"><div class="info-panel" style="background:linear-gradient(145deg,#11212e,#07111c);"><h2 style="font-size:2rem;">Ready to fix or upgrade?</h2><p>Same-day service, genuine spares, fast delivery.</p><a href="https://wa.me/254795323615" class="btn btn-green" style="margin-top:12px;"><i class="fab fa-whatsapp"></i> Start your order →</a></div></div>
+  <div class="container" style="margin:40px auto; text-align:center;"><div class="info-panel" style="background:#f1f5f9; border:1px solid #e2e8f0;"><h2 style="font-size:2rem; color:#0f172a;">Ready to fix or upgrade?</h2><p style="color:#475569;">Same-day service, genuine spares, fast delivery.</p><a href="https://wa.me/254795323615" class="btn btn-green" style="margin-top:12px;"><i class="fab fa-whatsapp"></i> Start your order →</a></div></div>
 </main>
 
 <footer><div class="container"><p>© 2026 Winterfell Technologies — Quality repairs & accessories. Juja Town.</p><p>Branded by 📞 Kelvin | +254 106 624 924</p></div></footer>
@@ -272,9 +281,7 @@
   function renderMovingStrip() {
     const track = document.getElementById('marqueeTrack');
     if (!products.length) { track.innerHTML = '<div style="padding:20px;">No products to display</div>'; return; }
-    // Create a set of items for the moving strip
     let itemsHtml = '';
-    // Duplicate the products to make the infinite scroll seamless (we'll double the list)
     const doubledProducts = [...products, ...products];
     doubledProducts.forEach(p => {
       itemsHtml += `
@@ -286,9 +293,8 @@
       `;
     });
     track.innerHTML = itemsHtml;
-    // Adjust animation duration based on number of items (smooth speed)
     const itemCount = products.length;
-    const duration = Math.max(20, itemCount * 1.5); // dynamic duration between 20-40s
+    const duration = Math.max(20, itemCount * 1.5);
     track.style.animationDuration = `${duration}s`;
   }
 
@@ -296,7 +302,7 @@
   function showLightbox(url) { document.getElementById('lightbox-img').src = url; document.getElementById('lightbox').classList.add('show'); }
   function hideLightbox() { document.getElementById('lightbox').classList.remove('show'); }
 
-  // Cart and helper functions (unchanged)
+  // Cart and helper functions
   let cart = [];
   const phoneNumber = '254795323615';
   function formatKES(v) { return 'KES ' + Number(v).toLocaleString(); }
